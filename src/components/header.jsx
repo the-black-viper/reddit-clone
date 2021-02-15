@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh'
     },
     appbar: {
-        backgroundColor: '#3B3B3B'
+        backgroundColor: '#1F2133'
     },
     appbarWrapper: {
         display: 'flex',

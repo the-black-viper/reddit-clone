@@ -23,17 +23,28 @@ const useStyles = makeStyles((theme) => ({
     dialogText: {
         color: 'white'
     },
-    textField: {
-        color: 'white'
+    titleField: {
+      marginTop: '20px',
+      width: '50vh',
+      color: 'white'
+    },
+    postField: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      marginTop: '20px',
+      width: '50vh',
+      height: '350px',
+      color: 'white'
     }
 }));
 
 
 const CssTextField = withStyles({
     root: {
-       '& label': {
+      '& label': {
             color: 'white',
-          },
+            marginTop: '20px'
+      },
       '& label.Mui-focused': {
         color: 'white',
       },
@@ -59,6 +70,7 @@ function NewPost() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [title, setTitle] = React.useState('');
+    const [content, setContent] = React.useState('');
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -76,7 +88,8 @@ function NewPost() {
     const handleSubmit = async () => {
         const date = new Date();
 
-        await db.collection("posts").add({
+        await db.collection("userPosts").add({
+            content,
             title,
             upVotesCount: 0,
             downVotesCount: 0,
@@ -95,21 +108,33 @@ function NewPost() {
                     style: {
                     backgroundColor: '#616161',
                     boxShadow: 'none',
+                    width: '500px',
                     },
                 }}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title">
-            <DialogTitle  className={classes.dialogText} id="form-dialog-title">Post</DialogTitle>
+            <DialogTitle  className={classes.dialogText} id="form-dialog-title">Create a Post</DialogTitle>
               <DialogContent >
                 <CssTextField
                 InputProps={{
-                    className: classes.textField
+                    className: classes.titleField
                   }}
-                    label="New Post"
+                    label="Title"
                     variant="outlined"
                     id="custom-css-outlined-input"
                     onChange={(e) => setTitle(e.target.value)}
+
+                    />
+                  <br/>
+                  <CssTextField
+                InputProps={{
+                    className: classes.postField
+                  }}
+                    label="Text(Optional)"
+                    variant="outlined"
+                    id="custom-css-outlined-input"
+                    onChange={(e) => setContent(e.target.value)}
 
                     />
 
