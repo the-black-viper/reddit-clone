@@ -9,12 +9,9 @@ Created using React JS, Material-UI and Firebase.
     ### `git clone `
 
 2. In the project directory run:
-    ### `npm start`
-
-3. Install all modules.
     ### `npm install`
 
-4. Run the app in  [http://localhost:3000].
+3. Run the app in  [http://localhost:3000].
     ### `npm start`
 
 ## Project Preview
