@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { useDispatch } from "react-redux";
 import { clickTrigger } from "../redux/cardState";
 import CloseIcon from '@material-ui/icons/Close';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
     },
     container: {
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'column',
+        marginTop: '65px',
         backgroundColor: '#0B0C10',
         width: '80%',
         height: 'auto'
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         color: '#ffffff'
     },
     card: {
-        marginTop: '100px',
+        // marginTop: '20px',
         backgroundColor: '#1F2133',
         width: '60%',
         height: '70%'
@@ -41,10 +42,10 @@ const useStyles = makeStyles((theme) => ({
     iconButton: {
         float: 'right',
         position: 'relative',
-        transform: "translateX(-80%)"
+        transform: "translateX(200%)"
     },
     closeIcon: {
-        marginTop: '65px',
+        // marginTop: 'px',
         color: 'white',
     }
 
@@ -66,32 +67,36 @@ const FocusPost = ({post}) => {
         <div className={classes.root} onClick={() => dispatch(clickTrigger())}>
             
             <div className={classes.container} onClick={stopEvent}>
-                
-                
+            
+                <Grid container justify="flex-end" alignItems="flex-end">
+
+                    <IconButton style={{ bottom: 3, right: 3 }} onClick={() => dispatch(clickTrigger())}>
+                        <CloseIcon className={classes.closeIcon} />
+                    </IconButton>
+                </Grid>
                 <Card className={classes.card} variant="outlined">
-                    <CardActionArea>
-                        <CardContent>
-                            {/* <Typography className={classes.titleText} color="textSecondary" gutterBottom>
-                                {`Posted by: ${title}`}
-                            </Typography> */}
-                            <Typography className={classes.text}
-                            variant="h4"
-                            component="h5"
-                            fontSize="28px"
-                            fontWeight="fontWeightBold"
-                            m={1} >
-                                {title}
-                            </Typography>
-                            <Typography className={classes.text} variant="body2" component="p">
-                                <br/>
-                                {content}
-                            </Typography>
-                        </CardContent>
+                <CardActionArea>
+                    <CardContent>
+                        {/* <Typography className={classes.titleText} color="textSecondary" gutterBottom>
+                            {`Posted by: ${title}`}
+                        </Typography> */}
+                        <Typography className={classes.text}
+                        variant="h4"
+                        component="h5"
+                        fontSize="28px"
+                        fontWeight="fontWeightBold"
+                        m={1} >
+                            {title}
+                        </Typography>
+                        <Typography className={classes.text} variant="body2" component="p">
+                            <br/>
+                            {content}
+                        </Typography>
+                    </CardContent>
                     </CardActionArea>
                 </Card>
-                <IconButton onClick={() => dispatch(clickTrigger())}>
-                    <CloseIcon className={classes.closeIcon}/>
-                </IconButton>
+            
+                
             </div>
 
         </div>

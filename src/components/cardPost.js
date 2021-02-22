@@ -83,7 +83,7 @@ const CardPost = ({post}) => {
         <div className={classes.postContent}  />
         <div >
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {`Posted by: ${post.title}`}
+          {`Posted by: ${post.id}`}
         </Typography>
         <Typography className={classes.title} variant="h5" component="h2">
           {post.title}
